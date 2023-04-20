@@ -72,7 +72,23 @@ namespace BankTest
 
             // assert is handled by ExpectedException  
         }
+        [TestMethod]
+        public void Credit_WithValidAmount_UpdatesBalance()
+        {
+            // arrange  
+            double beginningBalance = 11.99;
+            double CreditAmount = 1.00;
+            double expected = 12.99;
+            BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
 
+            // act  
+            account.Credit(CreditAmount);
+
+            // assert  
+            double actual = account.Balance;
+            Assert.AreEqual(expected, actual, 0.001, "Account not debited correctly");
+            
+        }
 
     }
 }
